@@ -7,7 +7,9 @@ class UpdateCharacter extends Component {
         return (
             <div>
                 <CharacterForm updateChar={true}
-                    character={this.props.character} />
+                    character={this.props.character}
+                    deleteCharacter={this.props.deleteCharacter}
+                    updateCharacter={this.props.updateCharacter}  />
             </div>
         )
     }

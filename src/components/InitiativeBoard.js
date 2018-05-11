@@ -16,7 +16,9 @@ class InitiativeBoard extends React.Component {
                 <CharacterBox character={character}
                 keyId={key}
                 toggleUpdateForm={this.props.toggleUpdateForm}
-                showUpdate={this.props.showUpdate} />
+                showUpdate={this.props.showUpdate}
+                deleteCharacter={this.props.deleteCharacter}
+                updateCharacter={this.props.updateCharacter} />
         </li>
     }
 

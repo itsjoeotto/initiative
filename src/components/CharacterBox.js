@@ -16,7 +16,10 @@ class CharacterBox extends Component {
                     {this.props.character.name} : {this.props.character.roll}
                 </div>
 
-                {(this.props.character.toBeUpdated) ? <UpdateCharacter character={this.props.character} /> : null }
+                {(this.props.character.toBeUpdated) ? 
+                <UpdateCharacter character={this.props.character}
+                deleteCharacter={this.props.deleteCharacter} 
+                updateCharacter={this.props.updateCharacter} /> : null }
             </div>
         )
     }
