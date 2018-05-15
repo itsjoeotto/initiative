@@ -2,26 +2,26 @@
   "name": "tracker",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "devDependencies": {
     "react-scripts": "1.1.0"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
-    "firebase": "^4.12.1",
+    "firebase": "^4.13.1",
     "foreman": "^2.0.0",
-    "mongoose": "^5.0.10",
-    "nodemon": "^1.17.2",
+    "mongoose": "^5.1.0",
+    "nodemon": "^1.17.4",
     "re-base": "^3.2.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "socket.io": "^2.0.4"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "socket.io": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "dev:client": "react-scripts start",
-    "dev:server": "node server/server.js",
-    "start-dev": "nf start -p 3000",
+    "server": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

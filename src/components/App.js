@@ -4,7 +4,6 @@ import InitiativeBoard from './InitiativeBoard';
 import axios from 'axios';
 import io from 'socket.io-client';
 import '../App.css';
-// import base from '../base';
 
 class App extends Component {
  constructor() {
@@ -15,8 +14,7 @@ class App extends Component {
    const setStateFromSocket = data => {
     this.setState({initiative: data.initiative});
    }
-    //change this to firebase stuff
-   this.url = 'http://localhost:3001/characters';
+
    this.socket = io('http://localhost:3001');
    this.socket.on('RECEIVE_DATA', (data) => {
     setStateFromSocket(data);
@@ -44,10 +42,8 @@ class App extends Component {
   }
 
   getCharactersFromServer = () => {
-    axios.get(this.url).then(res => {
-      // let sortState = res.data.sort((a, b) => {
-      //   return a.roll - b.roll;
-      // }); 
+    axios.get('/characters').then(res => {
+      console.log('characters', res.data);
       this.setState({initiative: res.data});
       this.emitData();
     })
@@ -57,7 +53,7 @@ class App extends Component {
   };
 
   updateCharacter = character => {
-    axios.put(`${this.url}/${character._id}`, character).then(res => {
+    axios.put(`${'/characters'}/${character._id}`, character).then(res => {
       console.log('updated character', res.data);
       let filterCharacter = this.state.initiative.filter(character => character._id !== res.data._id);
       let newState = [...filterCharacter, res.data];
@@ -74,7 +70,7 @@ class App extends Component {
 
 
   postCharactersToServer = character => {
-    axios.post(this.url, character).then(res => {
+    axios.post('/characters', character).then(res => {
       console.log('post worked', res);
       this.getCharactersFromServer();
     })
@@ -83,8 +79,17 @@ class App extends Component {
     });
   }
 
+  clearBoard = () => {
+    axios.delete('/characters').then(res => {
+      this.setState({initiative: []});
+    })
+    .catch(err => {
+      console.log('delete all error: ', err);
+    })
+  }
+
   deleteCharacter = id => {
-    axios.delete(`${this.url}/${id}`).then(res => {
+    axios.delete(`${'/characters'}/${id}`).then(res => {
       console.log('character deleted');
       this.getCharactersFromServer();
     })
@@ -101,16 +106,17 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Initiative!</h1>
+      <div className='App'>
+        <h1>INITIATIVE TRACKER</h1>
+        <AddCharacter addCharacter={this.addCharacter}
+          clearBoard={this.clearBoard} 
+          addChar={true}
+          initiative={this.state.initiative} 
+          url={'/characters'} />
         <InitiativeBoard initiative={this.state.initiative}
           toggleUpdateForm={this.toggleUpdateForm}
           deleteCharacter={this.deleteCharacter}
           updateCharacter={this.updateCharacter} />
-        <AddCharacter addCharacter={this.addCharacter} 
-          addChar={true}
-          initiative={this.state.initiative} 
-          url={this.url} />
       </div>
     );
   }

@@ -6,6 +6,7 @@ let character_controller = require('../controllers/characters');
   router.route('/')
     .get(character_controller.getCharacters)
     .post(character_controller.addCharacters)
+    .delete(character_controller.deleteAll)
   
   router.route('/:character_id')
     .put(character_controller.updateCharacter)

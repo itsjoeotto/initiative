@@ -1,14 +1,57 @@
-h1 {
-  color: green;
+.App {
+  /* font-family: 'Open Sans', sans-serif; */
+  font-family: 'Almendra', serif;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./photos/loneknight.jpg");
+}
+
+.App h1 {
+  /* color:whitesmoke; */
+  padding-top: 2%;
+  padding-left: 10%;
+  letter-spacing: 3px;
+}
+
+.initiative-board {
+  padding-left: 20%;
+  /* background-image: url("./photos/scroll.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width:30%;
+  height:100%; */
+}
+
+.add-character {
+  /* background-color: skyblue; */
+  /* color: whitesmoke; */
+  margin-left: 10%;
+}
+.character-form {
+  display: inline;
+}
+
+.add-character input {
+  margin-right: 5%;
+}
+.add-char-buttons button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 button {
-  color: blue;
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: lightslategray;
+  font-family: 'Almendra', serif;
 }
 
 li {
   cursor: pointer;
+  /* color:whitesmoke; */
 }
-
 
 

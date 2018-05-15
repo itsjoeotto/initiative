@@ -26,7 +26,7 @@ class InitiativeBoard extends React.Component {
     render() {
         const initiativeIds = Object.keys(this.props.initiative);
         return (
-            <div>
+            <div className="initiative-board">
                 <ul>
                     {initiativeIds.map(this.renderList)}
                 </ul>

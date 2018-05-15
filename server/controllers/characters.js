@@ -52,3 +52,15 @@ exports.deleteCharacter = function(req, res) {
       }
     });
 }
+
+exports.deleteAll = function(req, res) {
+    console.log('Delete all characters');
+    Characters.remove({}, function(err, data) {
+        if (err) {
+            console.log('err deleting all');
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(200);
+        }
+    });
+}

@@ -32,13 +32,17 @@ class CharacterForm extends Component {
 
     render() {
         return (
-            <form className="character-form" onSubmit={(this.props.addChar) ? this.createCharacter : this.updateCharacter} >
+            <form className="character-form" autoComplete="off" onSubmit={(this.props.addChar) ? this.createCharacter : this.updateCharacter} >
                 <input name="name" ref={input => this.name = input} type="text" placeholder={(this.props.addChar) ? "Name" :this.props.character.name} />
                 <input name="roll" ref={input => this.roll = input} type="number" placeholder={(this.props.addChar) ? "Roll" :this.props.character.roll} />
                 {/* <input name="party" ref="party" type="checkbox" />Party
                 <input name="foe" ref="foe" type="checkbox" /> Foe */}
                 {(this.props.addChar) ? 
-                <button type="submit">Add</button> : 
+                <div className="add-char-buttons">
+                    <button type="submit">Add</button>
+                    <button type="button" className="clear-board-button"
+                    onClick={this.props.clearBoard}>Clear the Board</button>
+                </div> :
                 <div>
                     <button type="submit">Update</button>
                     <button type="button" onClick={this.handleDelete}>Delete</button>

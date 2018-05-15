@@ -42,8 +42,9 @@ class AddCharacter extends Component {
 
     render() {
         return (
-            <div>
+            <div className="add-character">
                 <CharacterForm addChar={true}
+                    clearBoard={this.props.clearBoard}
                     addCharacter={this.props.addCharacter} />
             </div>
         );
