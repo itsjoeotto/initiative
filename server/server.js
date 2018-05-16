@@ -10,8 +10,14 @@ const router = express.Router();
 const port = process.env.API_PORT || 3001;
 // app.get('env');
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+    app.use(express.static('/build'));
 }
+
+// app.use(express.static(path.join(__dirname, 'build')));
+
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
