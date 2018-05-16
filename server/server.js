@@ -3,15 +3,16 @@ const socket = require('socket.io');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const characterRoute = require('./route/characters');
+const path = require('path');
 
 const app = express();
 const router = express.Router();
 
 const port = process.env.API_PORT || 3001;
 app.get('env');
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('/build'));
-}
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static('/build'));
+// }
 
 app.use(express.static(path.join(__dirname, 'build')));
 
